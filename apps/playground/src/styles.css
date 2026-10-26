@@ -1,0 +1,80 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1c2128;
+  --muted: #5b6573;
+  --line: #dde1e6;
+  --accent: #2456d8;
+  --accent-text: #ffffff;
+  --range: #e3ebff;
+  --preview: #f0f4ff;
+  --focus: #f5a524;
+  --disabled: #8a929c;
+  color-scheme: light dark;
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111418;
+    --surface: #1a1e24;
+    --text: #e7eaee;
+    --muted: #9aa3ae;
+    --line: #2d333b;
+    --accent: #6c93ff;
+    --accent-text: #0b0d10;
+    --range: #22305a;
+    --preview: #1d2540;
+    --disabled: #6b7480;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 96px; }
+h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 40px 0 12px; }
+.lede { color: var(--muted); margin: 0; }
+.demo { position: relative; display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; }
+button, input { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+button { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+button:disabled { opacity: 0.4; cursor: default; }
+input { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); width: 12ch; }
+input[aria-invalid='true'] { border-color: #d13b3b; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.popup {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 10; display: flex; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.14); width: min(680px, calc(100vw - 32px));
+}
+.popup footer { flex-basis: 100%; display: flex; justify-content: flex-end; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+.popup footer button:last-child { background: var(--accent); color: var(--accent-text); border-color: transparent; font-weight: 600; }
+[role='group'] { display: flex; flex-direction: column; padding: 8px 0; border-right: 1px solid var(--line); min-width: 150px; }
+[role='group'] button { border: 0; border-radius: 0; text-align: left; padding: 8px 16px; background: none; }
+[role='group'] [data-active] { background: var(--accent); color: var(--accent-text); }
+
+[data-datespan-grid], .demo > div > div:has(> [role='grid']) { flex: 1; padding: 12px; min-width: 260px; }
+[data-datespan-header] { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+[role='grid'] { display: flex; flex-direction: column; gap: 2px; }
+[role='row'] { display: flex; gap: 2px; }
+[role='columnheader'] { flex: 1; text-align: center; font-size: 12px; color: var(--muted); padding: 4px 0; }
+[role='gridcell'] { flex: 1; text-align: center; padding: 8px 0; border-radius: 8px; cursor: pointer; user-select: none; font-variant-numeric: tabular-nums; -webkit-tap-highlight-color: transparent; }
+[role='gridcell']:hover:not([data-disabled]) { background: var(--preview); }
+[role='gridcell'][data-outside] { color: var(--muted); }
+[role='gridcell'][data-today] { box-shadow: inset 0 0 0 1px var(--accent); }
+[role='gridcell'][data-preview] { background: var(--preview); }
+[role='gridcell'][data-in-range] { background: var(--range); border-radius: 0; }
+[role='gridcell'][data-range-start] { border-radius: 8px 0 0 8px; }
+[role='gridcell'][data-range-end] { border-radius: 0 8px 8px 0; }
+[role='gridcell'][data-range-start][data-range-end] { border-radius: 8px; }
+[role='gridcell'][data-selected] { background: var(--accent); color: var(--accent-text); font-weight: 600; }
+[role='gridcell'][data-disabled] { color: var(--disabled); cursor: default; background: none; box-shadow: none; }
+#date-field .popup { width: 300px; }
+
+@media (max-width: 640px) {
+  .popup { position: fixed; left: 8px; right: 8px; top: auto; bottom: 8px; width: auto; flex-direction: column; }
+  [role='group'] { border-right: 0; border-bottom: 1px solid var(--line); }
+  [data-part] [role='gridcell'] { padding: 16px 0; font-size: 17px; }
+  #date-field .popup { width: auto; }
+}
+output, [role='status'] { flex-basis: 100%; margin: 0; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+[role='status']:empty { display: none; }

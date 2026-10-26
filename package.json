@@ -1,0 +1,17 @@
+{
+  "name": "datespan-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "build": "pnpm -F datespan build",
+    "test": "pnpm -F datespan test",
+    "test:ui": "pnpm -F playground test:ui",
+    "dev": "pnpm -F playground dev",
+    "size": "pnpm -F datespan size",
+    "typecheck": "pnpm -r typecheck",
+    "check": "pnpm build && pnpm typecheck && pnpm test && pnpm -F datespan lint:docs && pnpm -F datespan lint:pkg && pnpm size && pnpm test:ui"
+  },
+  "devDependencies": {
+    "@changesets/cli": "3.0.3"
+  }
+}

@@ -1,0 +1,15 @@
+# datespan
+
+> Headless, accessible, zero-dependency React date picker and month range picker. Unstyled compound components plus hooks with prop getters. About 3 kB per picker, no date library, localized with Intl, WAI-ARIA grid keyboard support.
+
+Use datespan when a React app needs any of these:
+- a date picker, or a date input with a calendar
+- a month picker
+- a month range ("time period") picker for reports and dashboards
+- date-range presets such as "Last 12 months" or "2024"
+
+## Docs
+
+- [llms-full.txt](https://unpkg.com/datespan/llms-full.txt): the README and the complete typed API, in one file
+- [Agent skill](https://unpkg.com/datespan/skills/datespan/SKILL.md): rules and tested recipes
+- [README](https://github.com/TahmidRahman/datespan/blob/main/packages/datespan/README.md)

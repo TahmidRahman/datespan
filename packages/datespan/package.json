@@ -1,0 +1,127 @@
+{
+  "name": "datespan",
+  "version": "0.1.0",
+  "description": "Headless, accessible, zero-dependency React date picker and month range picker: hooks + unstyled components, presets, keyboard navigation, Intl localization. ~3 kB per picker.",
+  "keywords": [
+    "react",
+    "date-picker",
+    "datepicker",
+    "month-picker",
+    "month-range-picker",
+    "date-range-picker",
+    "range-picker",
+    "calendar",
+    "headless",
+    "unstyled",
+    "accessible",
+    "a11y",
+    "hooks",
+    "tailwind",
+    "shadcn",
+    "presets",
+    "lightweight",
+    "zero-dependency"
+  ],
+  "license": "MIT",
+  "author": "Tahmid Rahman <tahmid131@gmail.com>",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "llms.txt",
+    "llms-full.txt",
+    "skills",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsdown && node scripts/docs.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json",
+    "size": "size-limit",
+    "lint:pkg": "publint && attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm",
+    "lint:docs": "node scripts/docs.mjs --check"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@size-limit/preset-small-lib": "14.2.0",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
+    "@types/node": "^22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "axe-core": "^4.14.0",
+    "jsdom": "30.1.3",
+    "publint": "0.3.25",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "size-limit": "14.2.0",
+    "tsdown": "0.23.1",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TahmidRahman/datespan.git",
+    "directory": "packages/datespan"
+  },
+  "homepage": "https://github.com/TahmidRahman/datespan#readme",
+  "bugs": "https://github.com/TahmidRahman/datespan/issues",
+  "size-limit": [
+    {
+      "name": "useMonthRangePicker + presets",
+      "path": "dist/index.js",
+      "import": "{ useMonthRangePicker, lastNMonths, lastNDays, calendarYear, yearToDate }",
+      "ignore": [
+        "react"
+      ],
+      "limit": "3 kB"
+    },
+    {
+      "name": "useDatePicker",
+      "path": "dist/index.js",
+      "import": "{ useDatePicker }",
+      "ignore": [
+        "react"
+      ],
+      "limit": "3 kB"
+    },
+    {
+      "name": "usePopover",
+      "path": "dist/index.js",
+      "import": "{ usePopover }",
+      "ignore": [
+        "react"
+      ],
+      "limit": "1 kB"
+    },
+    {
+      "name": "everything",
+      "path": "dist/index.js",
+      "import": "*",
+      "ignore": [
+        "react"
+      ],
+      "limit": "6 kB"
+    }
+  ],
+  "bin": {
+    "datespan": "./bin/datespan.js"
+  }
+}
